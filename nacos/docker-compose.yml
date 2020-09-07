@@ -1,15 +1,27 @@
-version: '2.2'
+version: "3.1"  #这个版本和宿主机docker-compose版本相关
 services:
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.9.0
+  nacos:
+    image: nacos/nacos-server:latest
+    container_name: nacos-standalone-mysql
+    volumes:
+      - ./standalone-logs/:/home/nacos/logs
+      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
     ports:
-      - "5601:5601"
+      - "8848:8848"
+    restart: always
     networks:
       - elastic
     environment:
-      SERVER_NAME: kibana
-      ELASTICSEARCH_HOSTS: http://localhost:9200
-      ELASTICSEARCH_URL: http://localhost:9200
+      MODE: standalone
+      SPRING_DATASOURCE_PLATFORM: mysql
+      MYSQL_MASTER_SERVICE_HOST: database
+      MYSQL_MASTER_SERVICE_PORT: 8926
+      MYSQL_MASTER_SERVICE_DB_NAME: nacos
+      MYSQL_MASTER_SERVICE_USER: root
+      MYSQL_MASTER_SERVICE_PASSWORD: c1234567
+      MYSQL_DATABASE_NUM: 1
+
+
 
 networks:
   elastic:
