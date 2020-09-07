@@ -12,15 +12,15 @@ services:
     networks:
       - elastic
     environment:
-      MODE: standalone
-      SPRING_DATASOURCE_PLATFORM: mysql
-      MYSQL_MASTER_SERVICE_HOST: database
-      MYSQL_MASTER_SERVICE_PORT: 8926
-      MYSQL_MASTER_SERVICE_DB_NAME: nacos
-      MYSQL_MASTER_SERVICE_USER: root
-      MYSQL_MASTER_SERVICE_PASSWORD: c1234567
-      MYSQL_DATABASE_NUM: 1
-
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_MASTER_SERVICE_HOST=database
+      - MYSQL_DATABASE_NUM=1
+      - MYSQL_MASTER_SERVICE_DB_NAME=nacos
+      - MYSQL_MASTER_SERVICE_PORT=8926
+      - MYSQL_MASTER_SERVICE_USER=root
+      - MYSQL_MASTER_SERVICE_PASSWORD=c1234567
 
 
 networks:
