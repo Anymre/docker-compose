@@ -11,7 +11,7 @@ services:
     ports:
       - "8848:8848"
     external_links:
-      - mysql:5.7
+      - database
     restart: on-failure
 
 networks:
