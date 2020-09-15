@@ -10,13 +10,11 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: c1234567
+    networks:
+      - elastic
 
     ports:
       - '8926:3306'
     volumes:
       - "./db:/var/lib/mysql"
       - "./conf:/etc/mysql/conf.d"
-
-networks:
-  elastic:
-    driver: bridge

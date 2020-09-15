@@ -10,10 +10,6 @@ services:
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
     ports:
       - "8848:8848"
-    external_links:
-      - database
     restart: on-failure
-
-networks:
-  elastic:
-    driver: bridge
+    networks:
+      - elastic
