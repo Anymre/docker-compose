@@ -11,7 +11,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: c1234567
     networks:
-      - elastic
+      - mysql
 
     ports:
       - '8926:3306'
