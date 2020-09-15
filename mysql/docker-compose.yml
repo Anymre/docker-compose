@@ -20,5 +20,5 @@ services:
       - "./conf:/etc/mysql/conf.d"
 
 networks:
-  elastic:
+  mysql:
     driver: bridge

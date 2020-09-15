@@ -12,8 +12,8 @@ services:
       - "8848:8848"
     restart: on-failure
     networks:
-      - elastic
+      - mysql
 
 networks:
-  elastic:
+  mysql:
     external: true
