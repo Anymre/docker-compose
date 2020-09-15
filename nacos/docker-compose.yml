@@ -16,5 +16,4 @@ services:
 
 networks:
   elastic:
-    driver: bridge
     external: true
