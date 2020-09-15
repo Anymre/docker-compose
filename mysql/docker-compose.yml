@@ -18,3 +18,7 @@ services:
     volumes:
       - "./db:/var/lib/mysql"
       - "./conf:/etc/mysql/conf.d"
+
+networks:
+  elastic:
+    driver: bridge
