@@ -1,19 +1,26 @@
-version: "3.1"
+version: '3'
+
 services:
   nacos:
     image: nacos/nacos-server:1.3.2
-    container_name: nacos-standalone-mysql
-    env_file:
-      - ../nacos/env/nacos-standlone-mysql.env
+    container_name: nacos
+    restart: always
+
+    environment:
+      PREFER_HOST_MODE: hostname
+      SPRING_DATASOURCE_PLATFORM: mysql
+      MODE: standalone
+      MYSQL_SERVICE_HOST: server.anymre.top
+      MYSQL_SERVICE_DB_NAME: nacos
+      MYSQL_SERVICE_PORT: 8926
+      MYSQL_SERVICE_USER: root
+      MYSQL_SERVICE_PASSWORD: c1234567
+      NACOS_APPLICATION_PORT: 9999
+      JVM_XMS: 512m
+      JVM_MMS: 320m
     volumes:
-      - ./standalone-logs/:/home/nacos/logs
-      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+      - ./docker/nacos/standalone-logs/:/home/nacos/logs
+      - ./docker/nacos/plugins/:/home/nacos/plugins
+      - ./docker/nacos/conf/application.properties:/home/nacos/conf/application.properties
     ports:
       - "8848:8848"
-    restart: on-failure
-    networks:
-      - mysql
-
-networks:
-  mysql:
-    external: true
