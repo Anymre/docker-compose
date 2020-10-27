@@ -18,9 +18,6 @@ services:
       NACOS_APPLICATION_PORT: 9999
       JVM_XMS: 512m
       JVM_MMS: 320m
-    volumes:
-      - ./docker/nacos/standalone-logs/:/home/nacos/logs
-      - ./docker/nacos/plugins/:/home/nacos/plugins
-      - ./docker/nacos/conf/application.properties:/home/nacos/conf/application.properties
+
     ports:
       - "8848:8848"
