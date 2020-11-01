@@ -9,9 +9,7 @@ services:
       - ./data/logs:/opt/logs
       - ./data/store:/opt/store
     networks:
-      rmq:
-        aliases:
-          - rmqnamesrv
+      - mq
   rmqbroker:
     image: foxiswho/rocketmq:broker
     container_name: rmqbroker
@@ -29,9 +27,7 @@ services:
     depends_on:
       - rmqnamesrv
     networks:
-      rmq:
-        aliases:
-          - rmqbroker
+      - mq
   rmqconsole:
     image: styletang/rocketmq-console-ng
     container_name: rmqconsole
@@ -42,10 +38,7 @@ services:
     depends_on:
       - rmqnamesrv
     networks:
-      rmq:
-        aliases:
-          - rmqconsole
+      - mq
 networks:
-  rmq:
-    name: rmq
-    driver: bridge
+  mq:
+    external: true
