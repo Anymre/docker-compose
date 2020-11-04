@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   rmqnamesrv:
-    image: apacherocketmq/rocketmq-nameserver
+    image: foxiswho/rocketmq:server
     container_name: rmqnamesrv
     ports:
       - 9876:9876
@@ -11,7 +11,7 @@ services:
     networks:
       - mq
   rmqbroker:
-    image: apacherocketmq/rocketmq-broker
+    image: foxiswho/rocketmq:broker
     container_name: rmqbroker
     ports:
       - 10909:10909
@@ -29,7 +29,7 @@ services:
     networks:
       - mq
   rmqconsole:
-    image: apacherocketmq/rocketmq-console
+    image: tony3154/rocketmq-console-ng
     container_name: rmqconsole
     ports:
       - 8080:8080
