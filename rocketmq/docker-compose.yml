@@ -29,7 +29,7 @@ services:
     networks:
       - mq
   rmqconsole:
-    image: tony3154/rocketmq-console-ng
+    image: styletang/rocketmq-console-ng
     container_name: rmqconsole
     ports:
       - 8080:8080
