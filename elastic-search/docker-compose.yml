@@ -77,4 +77,4 @@ volumes:
 
 networks:
   elastic:
-    external: true
+    external: false
