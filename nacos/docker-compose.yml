@@ -19,4 +19,4 @@ services:
       JVM_MMS: 320m
     ports:
       - "8848:8848"
-    mem_limit: 600m
+
