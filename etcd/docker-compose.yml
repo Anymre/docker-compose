@@ -24,10 +24,5 @@ services:
       - 2379:2379
       - 2380:2380
 
-  docker run \
-  -p 2379:2379 \
-  -p 2380:2380 \
-  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
-  --name etcd-gcr-v3.4.15 \
-  quay.io/coreos/etcd:v3.4.15 \
+
 
