@@ -3,8 +3,31 @@ services:
   etcd:
     image: quay.io/coreos/etcd:v3.4.15
     container_name: etcd
+    command: /usr/local/bin/etcd \
+      --name s1 \
+      --data-dir /etcd-data \
+      --listen-client-urls http://0.0.0.0:2379 \
+      --advertise-client-urls http://0.0.0.0:2379 \
+      --listen-peer-urls http://0.0.0.0:2380 \
+      --initial-advertise-peer-urls http://0.0.0.0:2380 \
+      --initial-cluster s1=http://0.0.0.0:2380 \
+      --initial-cluster-token tkn \
+      --initial-cluster-state new \
+      --log-level info \
+      --logger zap \
+      --log-outputs stderr
     environment:
       name: etcd
+    volumes:
+    - ./data:/etcd-data
     ports:
       - 2379:2379
       - 2380:2380
+
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-v3.4.15 \
+  quay.io/coreos/etcd:v3.4.15 \
+
