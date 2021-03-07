@@ -47,7 +47,7 @@ function write_defined_file(){
     if(@file_get_contents($lock_file)=='locked'){
         $result['code']=1000;
         $result['message']='请将"网站目录/agent_lib/lock.txt" 的内容修改成unlocked';
-        return $_SERVER['DOCUMENT_ROOT'];
+        return $result;
     }
     $result['code']=1100;
     $result['message']='没有权限去修改"网站目录/agent_lib/defined.php"文件，请将defined.php权限改成可写';
@@ -88,6 +88,7 @@ function check_is_writable(){
     }
   
     $result['code']=1;
+    $result['root']=$_SERVER['DOCUMENT_ROOT'];
     $result['message']='检测权限成功';
     $result['data']=$list;
 
