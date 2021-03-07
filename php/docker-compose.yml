@@ -7,7 +7,7 @@ services:
       - "80:80"
     volumes:
       - /www:/usr/share/nginx/html
-      - /www/conf/nginx.conf:/etc/nginx/nginx.conf
+      - /www/conf/nginx.conf:/etc/nginx/
       - /www/logs:/var/log/nginx
     networks:
       - web-net
