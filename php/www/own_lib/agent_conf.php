@@ -18,7 +18,7 @@ function upload(){
         return $result;
     }
     $path='/own_static/upload/';
-    $real_path=$_SERVER['DOCUMENT_ROOT'].$path;
+    $real_path='/web'.$path;
     if(!isset($_FILES['file'])){
         $result['code']=1000;
         $result['message']='上传失败';
@@ -42,8 +42,8 @@ function upload(){
 }
 function write_defined_file(){
     
-    $lock_file=$_SERVER['DOCUMENT_ROOT'].'/agent_lib/lock.txt';
-    $defined_file=$_SERVER['DOCUMENT_ROOT'].'/agent_lib/defined.php';
+    $lock_file='/web/agent_lib/lock.txt';
+    $defined_file='/web/agent_lib/defined.php';
     if(@file_get_contents($lock_file)=='locked'){
         $result['code']=1000;
         $result['message']='请将"网站目录/agent_lib/lock.txt" 的内容修改成unlocked';
@@ -71,7 +71,7 @@ function check_is_writable(){
     $list=[];
     foreach ($array as $file_){
  
-        $file=$_SERVER['DOCUMENT_ROOT'].'/'.$file_;
+        $file='/web/'.$file_;
         $item['file'] =$file_;
         if(file_exists($file)){
            $item['is_exists'] =1;
@@ -88,7 +88,7 @@ function check_is_writable(){
     }
   
     $result['code']=1;
-    $result['root']=$_SERVER['DOCUMENT_ROOT'];
+    $result['root']='/web';
     $result['message']='检测权限成功';
     $result['data']=$list;
 
