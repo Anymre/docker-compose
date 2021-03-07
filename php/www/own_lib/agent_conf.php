@@ -47,7 +47,7 @@ function write_defined_file(){
     if(@file_get_contents($lock_file)=='locked'){
         $result['code']=1000;
         $result['message']='请将"网站目录/agent_lib/lock.txt" 的内容修改成unlocked';
-        return $result;
+        return $_SERVER['DOCUMENT_ROOT'];
     }
     $result['code']=1100;
     $result['message']='没有权限去修改"网站目录/agent_lib/defined.php"文件，请将defined.php权限改成可写';
