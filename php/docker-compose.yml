@@ -18,5 +18,14 @@ services:
       - ./www:/web
     networks:
       - web-net
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - web-net
+
 networks:
   web-net:
