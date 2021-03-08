@@ -63,7 +63,6 @@ function getNewToken($appid,$appsecret){
    global $appsecret;
    $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$appsecret."";
    $access_token_Arr =  file_get_contents($url);
-   print_r($access_token_Arr);
    $token_jsonarr = json_decode($access_token_Arr, true);
    return $token_jsonarr["access_token"];
 }
@@ -79,7 +78,7 @@ function getTicket(){
 //如果过期了则请求接口生成新的jsapi_ticket并且缓存jsapi_ticket.json
 if (time() > $result['expires']){
        $data = array();
-       $data['jsapi_ticket'] = getNewTicket();
+       $data['jsapi_ticket'] = getNewTicket($appid,$appsecret);
        $data['expires'] = time()+7000;
        $jsonStr =  json_encode($data);
        $fp = fopen("jsapi_ticket.json", "w");
