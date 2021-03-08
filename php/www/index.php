@@ -9,7 +9,7 @@ $shareid = trim($_GET["sid"]);
 include './db_config.php';
 
 // 连接数据库
-$conn = new mysqli($db_url, $db_user, $db_pwd, $db_name);
+$conn = new mysqli($db_url, $db_user, $db_pwd, $db_name, $db_port);
 if ($conn->connect_error) {
     die("连接失败: " . $conn->connect_error);
 } 
