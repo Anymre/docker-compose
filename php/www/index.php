@@ -63,6 +63,7 @@ function getNewToken($appid,$appsecret){
    global $appsecret;
    $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$appsecret."";
    $access_token_Arr =  file_get_contents($url);
+   print_r($access_token_Arr);
    $token_jsonarr = json_decode($access_token_Arr, true);
    return $token_jsonarr["access_token"];
 }
