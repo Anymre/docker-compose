@@ -10,6 +10,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: c1234567
+      JAVA_OPTS: -Xms100m -Xmx512m"
     networks:
       - mysql
 
