@@ -1,4 +1,4 @@
-version: "2.3"
+version: "2"
 services:
   nginx:
     image: nginx
@@ -6,17 +6,26 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /www/web:/usr/share/nginx/html
-      - /www/conf:/etc/nginx/conf.d
-      - /www/logs:/var/log/nginx
+      - ./www:/usr/share/nginx/html
+      - ./www/conf/:/etc/nginx/
+      - ./www/logs:/var/log/nginx
     networks:
       - web-net
   php:
     image: phpdockerio/php72-fpm
     privileged: true
     volumes:
-      - /www:/web
+      - ./www:/web
     networks:
       - web-net
+#  mysql:
+#    image: mysql
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=root
+#    networks:
+#      - web-net
+
 networks:
   web-net:
