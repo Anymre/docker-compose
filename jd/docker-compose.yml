@@ -2,7 +2,7 @@ version: "3.0"
 services:
   # 第1个容器
   jd1:
-    image: lan-tianxiang/jd_shell:gitee  # 如果要从gitee更新脚本，则为：lan-tianxiang/jd_shell:gitee
+    image: mark4z/jd  # 如果要从gitee更新脚本，则为：lan-tianxiang/jd_shell:gitee
     container_name: jd1
     restart: always
     tty: true
