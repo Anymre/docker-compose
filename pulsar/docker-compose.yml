@@ -7,7 +7,7 @@ services:
       - 8086:8080
       - 6650:6650
     volumes:
-      - ./data.conf:/pulsar/data
+      - ./data:/pulsar/data
       - ./conf:/pulsar/conf
     command:
       bin/pulsar standalone
