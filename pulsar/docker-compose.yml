@@ -1,0 +1,14 @@
+frversion: '3'
+
+services:
+  pulsar:
+    image: apachepulsar/pulsar:2.8.0
+    ports:
+      - 8086:8080
+      - 6650:6650
+    volumes:
+      - ./data.conf:/pulsar/data
+      - ./conf:/pulsar/conf
+    command:
+      bin/pulsar standalone
+
