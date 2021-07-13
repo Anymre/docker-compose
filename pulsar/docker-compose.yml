@@ -6,11 +6,11 @@ services:
     ports:
       - 8086:8080
       - 6650:6650
-    volumes:
-      - pulsardata:/pulsar/data
-      - pulsarconf:/pulsar/conf
+#    volumes:
+#      - pulsardata:/pulsar/data
+#      - pulsarconf:/pulsar/conf
     command:
       bin/pulsar standalone
-volumes:
-  pulsardata: {}
-  pulsarconf: {}
+#volumes:
+#  pulsardata: {}
+#  pulsarconf: {}
